@@ -5,8 +5,17 @@ Para programar con ReactJS, no es instalar y ya, antes hay que hacer unas peque�
 Partimos de que ya tenemos NodeJS instalado, si aún no lo has instalado puede ir a Setup de NodeJS.
 Creamos nuestra carpeta donde tendremos el proyecto con `mkdir react-workshop`
 Entramos en la carpeta con `cd react-workshop`
-Y desde adentro hacemos `npm i`para inicializar el directorio como un proyecto de NodeJS, y de una vez podemos inicializarlo como un repositorio Git para tener control de versiones e ir guardando los cambios, esto con `git init`. Creamos el archivo `.gitignore` para excluir por lo menos el directorio `node_modules`que es donde se instalan las dependencias.
+Y desde adentro hacemos `npm i`para inicializar el directorio como un proyecto de NodeJS, y de una vez podemos inicializarlo como un repositorio Git para tener control de versiones e ir guardando los cambios, esto con `git init`. Creamos el archivo `.gitignore` para excluir por lo menos el directorio `node_modules`que es donde se instalan las dependencias y uno que otro archivo del sistema operativo y la build.
+```
+# mac files
+.DS_Store
 
+# dependencies
+node_modules
+
+# build
+dist
+```
 Creamos los directorios `public` donde guardaremeos todo nuestro contenido estático y nuestro `index.html` que luego utilizara ReactJS para renderizar nuestra app. Podemos copiar este código html en public/index.html para empezar:
 ```
 <!-- sourced from https://raw.githubusercontent.com/reactjs/reactjs.org/master/static/html/single-file-example.html -->
@@ -188,4 +197,4 @@ Listo esto, instalamos la configuracion de airbnb que esta bastante buena con `n
   }
 }
 ```
-Corremos el proyecto y vemos los errores, luego de corregirlos tendremos un codigo mucho mas limpio y legible.
+Corremos el proyecto y vemos los errores, luego de corregirlos tendremos un codigo mucho mas limpio y legible y listo para agregar mas.
