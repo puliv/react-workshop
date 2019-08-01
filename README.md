@@ -1,3 +1,4 @@
 # ReactJS Workshop
-- [Setup de NodeJS](./doc/NODE.md)
-- [Setup de ReactJS](./doc/REACT.md)
+## Setup
+- [Setup de NodeJS](./doc/setup/NODE.md)
+- [Setup de ReactJS](./doc/setup/REACT.md)
