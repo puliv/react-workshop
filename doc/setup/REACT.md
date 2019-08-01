@@ -198,3 +198,5 @@ Listo esto, instalamos la configuracion de airbnb que esta bastante buena con `n
 }
 ```
 Corremos el proyecto y vemos los errores, luego de corregirlos tendremos un codigo mucho mas limpio y legible y listo para agregar mas.
+
+Para correr el proyecto basta con ejecutar en consola `npm start` e ingresar a `http://localhost:3000`.
