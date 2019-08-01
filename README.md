@@ -10,3 +10,6 @@
 - [ReactJS sin JSX](./doc/jsx/NOJSX.md)
 - [Estilos dentro de JSX](./doc/jsx/STYLE.md)
 - [Composición de componentes con JSX](./doc/jsx/COMPOSITION.md)
+## Dataflow
+- [Props](./doc/dataflow/PROPS.md)
+- [State](./doc/dataflow/STATE.md)
