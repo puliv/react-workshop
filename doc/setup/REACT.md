@@ -171,6 +171,7 @@ Y ya tenemos una aplicacion funcional en react. Para arrancar nuestra app lo pod
     "webpack-dev-server": "^3.7.2"
   },
   "dependencies": {
+    "lodash": "^4.17.15",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-hot-loader": "^4.12.5"
