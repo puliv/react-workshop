@@ -60,40 +60,49 @@ const path = require("path");
 const webpack = require("webpack");
 
 module.exports = {
-  entry: "./src/index.js", // indica donde arranca nuestra app y donde empezar la build
-  mode: "development", // indica que estaremos trabajando en modo development
-  module: { // este objeto ayuda a definir como los modulos son transformados y cuales seran transformados
+  entry: "./src/index.js",
+  mode: "development",
+  stats: {
+    warnings: false
+  },
+  module: {
     rules: [
       {
-        test: /\.(js|jsx)$/, // evalua que tipo de archivos seran transformados en este caso los que terminen en .js y .jsx
-        exclude: /(node_modules|bower_components)/, // excluye los directorios para la build
-        loader: "babel-loader", // especificamos que queremos usar babel
-        options: { presets: ["@babel/env"] } // mas especificamente el preset env
+        test: /\.(js|jsx)$/,
+        exclude: /(node_modules|bower_components)/,
+        loader: "babel-loader",
+        options: { presets: ["@babel/env"] }
       },
       {
-        test: /\.scss$/, // evalua que tipo de archivos seran transformados para los estilos, en este caso los .scss utilizando sass
+        test: /\.(js)$/,
+        exclude: /node_modules/,
+        use: ["babel-loader", "eslint-loader"]
+      },
+      {
+        test: /\.scss$/,
         use: [
-          "style-loader", // crea los nodos de estilo desde los JS
-          "css-loader", // traduce CSS a CommonJS
-          "sass-loader" // compila Sass a CSS, usando Node Sass por defecto
+          "style-loader",
+          "css-loader",
+          "sass-loader"
         ]
       }
     ]
   },
-  resolve: { extensions: ["*", ".js", ".jsx"] }, // esto es para especificar que extenciones resolvera webpack (nos sirve para importar sin especificar el .js o .jsx)
-  output: { // aqui pondremo nuestro bundle o codigo transformado
-    path: path.resolve(__dirname, "dist/"), // especifica en que directorio irá el bundle
-    publicPath: "/dist/", // esto es para nuestro servidor sepa donde servir los archivos
-    filename: "bundle.js" // este es el nombre de nuestro bundle
+  resolve: { extensions: ["*", ".js", ".jsx"] },
+  output: {
+    path: path.resolve(__dirname, "dist/"),
+    publicPath: "/dist/",
+    filename: "bundle.js"
   },
-  devServer: { // aqui va la configuracion de nuestro servidor de desarrollo
-    contentBase: path.join(__dirname, "public/"), // el directorio donde estara nuetro archivo principal index.html
-    port: 3000, // el puerto en donde correra la aplicación
-    publicPath: "http://localhost:3000/dist/", // donde estrá nuestro bundle
-    hotOnly: true // el hotOnly es para poder usar el HotModuleReplacementPlugin
+  devServer: {
+    contentBase: path.join(__dirname, "public/"),
+    port: 3000,
+    publicPath: "http://localhost:3000/dist/",
+    hotOnly: true
   },
-  plugins: [new webpack.HotModuleReplacementPlugin()] // este plugin nos permite ver nuestros cambios en vivo y no estar refrescando constantemente
+  plugins: [new webpack.HotModuleReplacementPlugin()]
 };
+
 ```
 
 ### React
@@ -173,24 +182,22 @@ Y ya tenemos una aplicacion funcional en react. Para arrancar nuestra app lo pod
 Por ultimo instalaremos eslint que nos ayudara a crear codigo limpio y a prueba de errores sintacticos. Empecemos por instalar eslint y sus modulos para webpack con `npm install --save-dev eslint eslint-loader babel-eslint`.
 Luego de esto hay que hacer un pequeño ajuste en nuestro `webpack.config.js`, agregamos la siguiente regla:
 ```
-      {
-        test: /\.(js)$/,
-        exclude: /node_modules/,
-        use: ["babel-loader", "eslint-loader"]
-      },
+{
+  test: /\.(js)$/,
+  exclude: /node_modules/,
+  use: ["babel-loader", "eslint-loader"]
+},
 ```
 Listo esto, instalamos la configuracion de airbnb que esta bastante buena con `npx install-peerdeps --dev eslint-config-airbnb`. Luego creamos nuetro archivo de configuracion para eslint en el directorio raíz llamado `.eslintrc` y agregamos:
 
 ```
 {
   "parser": "babel-eslint",
-  "extends": ["airbnb"],
   "rules": {
-    "max-len": [1, 70, 2, {"ignoreComments": true}],
+    "max-len": "off",
     "react/jsx-filename-extension": "off",
     "react/prefer-stateless-function": "off"
-
-  }
+  },
   "globals": {
     "window": true,
     "document": true
