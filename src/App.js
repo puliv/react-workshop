@@ -9,10 +9,21 @@ import './App.scss';
 // Agregar boton que haga reset del contador volviendo a su valor inicial.
 
 class App extends Component {
+  constructor () {
+    super()
+
+    // this.handleOnClick = this.handleOnClick.bind(this)
+  }
+  
+  handleOnClick (name, e) {
+    console.log('name ', name)
+    console.log('event ', e)
+  }
+
   render() {
     return (
       <div className="App">
-        <button type="button">click!</button>
+        <button type="button" onClick={this.handleOnClick.bind(this,'Pulié')} >click!</button>
       </div>
     );
   }
